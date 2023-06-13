@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
+    "drf_spectacular",
 
     # local apps
     "accounts.apps.AccountsConfig",
@@ -140,6 +142,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 CORS_ORIGIN_WHITELIST = (
@@ -150,3 +153,9 @@ CORS_ORIGIN_WHITELIST = (
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SITE_ID = 1
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Blog API Project",
+    "DESCRIPTION": "A sample blog API to be built in DRF",
+    "VERSION": "1.0.0",
+}
